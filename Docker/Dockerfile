@@ -1,4 +1,4 @@
-FROM alpine:latest  AS test1 
+FROM alpine:latest AS test1 
 RUN touch file
 ENV test1="alpine"
 
