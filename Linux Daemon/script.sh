@@ -11,8 +11,3 @@ ExecStart=/opt/my-app/app --bind-adress:0.0.0.0
 
 [Install]
 WantedBy=multi-user.target
-
-
-
-
-
