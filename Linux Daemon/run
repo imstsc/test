@@ -1,4 +1,0 @@
-sudo chmod +x script.sh
-cp script.sh /etc/systemd/system/
-systemctl enable myunit
-systemctl start myunit
