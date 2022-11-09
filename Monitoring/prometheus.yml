@@ -7,5 +7,5 @@
       scrape_interval: 15s
       static_configs:
         - targets: ['localhost:9191']
-	  labels:
-		tag: 'test'
+        labels:
+          group: 'test'
