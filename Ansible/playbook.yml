@@ -1,0 +1,58 @@
+---
+- name: install win app
+  hosts: win
+  tasks:
+    - name: install app
+      win_package:
+        path: C:\app.msi
+        state: present
+    - name: run a cmd1
+      win_command: cmd1
+	register: result
+    - name: run a cmd2
+      win_command: cmd2 --arg=result.stdout        
+
+- name: install nix app
+  hosts: nix
+  remote_user: root
+  tasks: 
+   – name: install app
+     apt: name={{ item }} 
+	 state=latest
+     with_items:
+		– service-1
+		– service-2
+		– service-3
+		– service-4
+		– service-5
+		– service-6
+		– service-7
+		– service-8
+		– service-9
+		– service-10
+		– service-11
+		– service-12
+		– service-13
+		– service-14
+		– service-15
+		– service-16
+		– service-17
+		– service-18
+		– service-19
+		– service-20
+		– service-21
+		– service-22
+		– service-23
+		– service-24
+		– service-25
+		– service-26
+		– service-27
+		– service-28
+		– service-29
+		– service-30
+
+   - name: run a cmd1
+   - shell: cmd1
+      register: res
+   - shell: cmd2 --arg=res.stdout
+    

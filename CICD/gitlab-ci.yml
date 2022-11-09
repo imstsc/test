@@ -1,0 +1,60 @@
+default:
+	image: debian:10
+	tags:
+		- runner001
+	before_script:
+		- download-dep	
+
+stages:
+	- build
+	- test
+	- deploy
+  
+  
+build_win:
+	stage: build
+	script: build windows app
+	when: always
+	artifacts:
+		when: always
+		expire_in: 1 days
+		path: '/windows/app.exe'
+
+build_nix:
+	stage: build
+	script: build linux
+	when: always
+	artifacts:
+		when: always
+		expire_in: 1 days
+		path: '/linux/app'
+
+deploy:
+	stage: deploy
+	script: 
+		- 'curl -s -v -u "user:pass" --upload-file app.exe "myrepo.nexus.ru/windows"'
+		- 'curl -s -v -u "user:pass" --upload-file app "myrepo.nexus.ru/linux"'
+	only:
+		- tags
+  
+test-code-job1:
+	stage: test
+	script:
+		- run test1
+	only:
+    - /^test.*$/
+
+test-code-job2:
+	stage: test
+	script: 
+		- run test2
+	except:
+		- /^main.*$/
+	retry: 2
+test-code-job3:
+	stage: test
+	script: run test33
+	only:
+		- tags
+		- /^v.*$/
+     
