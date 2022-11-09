@@ -1,0 +1,3 @@
+cp myunit /etc/systemd/system/
+systemctl enable myunit
+systemctl start myunit
