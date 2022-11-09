@@ -18,7 +18,7 @@
   tasks: 
    – name: install app
      apt: name={{ item }} 
-     state=latest
+     state: latest
      with_items:
      – service-1
      – service-2
